@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "4a8cb887-d795-47e4-95c3-6c25a606d79e",
+		"name": "TesteShift",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Covid - Brasil",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responseSchema = {\r",
+							"    \"type\": \"object\",\r",
+							"    \"properties\": {\r",
+							"        \"updated\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"country\": {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"countryInfo\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"properties\": {\r",
+							"                \"_id\": {\r",
+							"                    \"type\": \"number\"\r",
+							"                },\r",
+							"                \"iso2\": {\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                \"iso3\": {\r",
+							"                    \"type\": \"string\"\r",
+							"                },\r",
+							"                \"lat\": {\r",
+							"                    \"type\": \"number\"\r",
+							"                },\r",
+							"                \"long\": {\r",
+							"                    \"type\": \"number\"\r",
+							"                },\r",
+							"                \"flag\": {\r",
+							"                    \"type\": \"string\"\r",
+							"                }\r",
+							"            }\r",
+							"        },\r",
+							"        \"cases\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"todayCases\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"deaths\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"todayDeaths\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"recovered\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"todayRecovered\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"active\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"critical\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"casesPerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"deathsPerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"tests\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"testsPerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"population\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"continent\": {\r",
+							"            \"type\": \"string\"\r",
+							"        },\r",
+							"        \"oneCasePerPeople\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"oneDeathPerPeople\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"oneTestPerPeople\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"activePerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"recoveredPerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        },\r",
+							"        \"criticalPerOneMillion\": {\r",
+							"            \"type\": \"number\"\r",
+							"        }\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"var jsonData = pm.response.json();\r",
+							"\r",
+							"pm.test('Validação da estrutura do JSON', function () {\r",
+							"    var validation = tv4.validate(jsonData, responseSchema);\r",
+							"    pm.response.to.have.status(200);\r",
+							"    pm.expect(validation).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://disease.sh/v3/covid-19/countries/{{country}}",
+					"protocol": "https",
+					"host": [
+						"disease",
+						"sh"
+					],
+					"path": [
+						"v3",
+						"covid-19",
+						"countries",
+						"{{country}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "country",
+			"value": "Brasil"
+		}
+	]
+}
